@@ -13,15 +13,29 @@ export const HeroSection = ({ splineBackground }: HeroSectionProps) => {
       {/* Navbar */}
       <FadeIn delay={0} y={-20} className="w-full relative z-50">
         <nav className="w-full flex justify-between items-center pt-6 md:pt-8 relative z-50">
-          {["About", "Services", "Projects"].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200"
+          {/* Logo */}
+          <div className="flex items-center group hover:scale-[1.02] transition-transform duration-300 cursor-pointer">
+            <span
+              className="text-[1rem] sm:text-[1.2rem] md:text-[1.4rem] tracking-tight flex items-baseline drop-shadow-md"
+              style={{ fontFamily: "'Press Start 2P', monospace" }}
             >
-              {item}
-            </a>
-          ))}
+              <span style={{ color: "#FF003C", textShadow: "0 0 15px rgba(255,0,60,0.3)" }}>aether</span>
+              <span style={{ color: "#FF00FF", marginLeft: "2px", textShadow: "0 0 15px rgba(255,0,255,0.3)" }}>UI</span>
+            </span>
+          </div>
+
+          {/* Links */}
+          <div className="flex items-center gap-4 sm:gap-8 md:gap-12">
+            {["About", "Services", "Projects"].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="text-[#D7E2EA] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-lg lg:text-[1.2rem] hover:opacity-70 transition-opacity duration-200"
+              >
+                {item}
+              </a>
+            ))}
+          </div>
         </nav>
       </FadeIn>
 

@@ -57,24 +57,15 @@ export default function Navigation() {
             {/* Logo */}
             <button
               onClick={() => scrollTo("home")}
-              className="flex items-center gap-2.5 group"
+              className="flex items-center group hover:scale-[1.02] transition-transform duration-300"
               aria-label="Go to top"
             >
-              <div
-                className="w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-                style={{
-                  background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(59,130,246,0.2))",
-                  border: "1px solid rgba(124,58,237,0.4)",
-                  boxShadow: "0 0 12px rgba(124,58,237,0.3)",
-                }}
-              >
-                <span className="text-xs font-bold text-[#A78BFA]" style={{ fontFamily: "Syne, sans-serif" }}>K</span>
-              </div>
               <span
-                className="text-sm font-bold text-white tracking-tight"
-                style={{ fontFamily: "Syne, sans-serif" }}
+                className="text-[1.1rem] tracking-tight flex items-baseline drop-shadow-md"
+                style={{ fontFamily: "'Press Start 2P', monospace" }}
               >
-                KRISH<span className="text-gradient-primary"> OS</span>
+                <span style={{ color: "#39FF14", textShadow: "0 0 15px rgba(57,255,20,0.3)" }}>aether</span>
+                <span style={{ color: "#00F0FF", marginLeft: "2px", textShadow: "0 0 15px rgba(0,240,255,0.3)" }}>UI</span>
               </span>
             </button>
 
