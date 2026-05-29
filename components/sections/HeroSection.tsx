@@ -19,8 +19,8 @@ export const HeroSection = ({ splineBackground }: HeroSectionProps) => {
               className="text-[1rem] sm:text-[1.2rem] md:text-[1.4rem] tracking-tight flex items-baseline drop-shadow-md"
               style={{ fontFamily: "'Press Start 2P', monospace" }}
             >
-              <span style={{ color: "#FF003C", textShadow: "0 0 15px rgba(255,0,60,0.3)" }}>aether</span>
-              <span style={{ color: "#FF00FF", marginLeft: "2px", textShadow: "0 0 15px rgba(255,0,255,0.3)" }}>UI</span>
+              <span style={{ color: "#BF00FF", textShadow: "0 0 8px rgba(191,0,255,0.8), 0 0 20px rgba(191,0,255,0.4)" }}>aether</span>
+              <span style={{ color: "#00E5FF", marginLeft: "2px", textShadow: "0 0 15px rgba(0,229,255,0.3)" }}>UI</span>
             </span>
           </div>
 
