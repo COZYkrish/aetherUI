@@ -2,6 +2,7 @@
 
 import { FadeIn } from "../ui/FadeIn";
 import { ContactButton } from "../ui/Buttons";
+import { motion } from "framer-motion";
 
 interface HeroSectionProps {
   splineBackground?: React.ReactNode;
@@ -41,6 +42,47 @@ export const HeroSection = ({ splineBackground }: HeroSectionProps) => {
 
       {/* Heading */}
       <div className="flex-1 flex flex-col justify-center sm:justify-start w-full relative z-0 pointer-events-none">
+        {/* Background DEVELOPER Text */}
+        <div className="absolute top-[40%] sm:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] text-center z-[-1] pointer-events-none select-none overflow-hidden mix-blend-screen">
+          <motion.span 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 0.06, scale: 1 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            className="font-black uppercase text-[18vw] leading-none text-[#00E5FF] tracking-widest blur-sm block"
+            style={{ textShadow: "0 0 50px rgba(0,229,255,0.8)" }}
+          >
+            DEVELOPER
+          </motion.span>
+        </div>
+
+        {/* Floating Tech Stack Pills */}
+        <div className="absolute inset-0 pointer-events-none hidden sm:block z-20">
+          {[
+            { text: "React", top: "25%", left: "10%", delay: 0.2 },
+            { text: "Next.js", top: "15%", right: "15%", delay: 0.4 },
+            { text: "Spring Boot", top: "50%", left: "5%", delay: 0.6 },
+            { text: "AWS", top: "60%", right: "8%", delay: 0.8 },
+            { text: "Docker", top: "35%", right: "5%", delay: 1.0 },
+            { text: "AI/ML", top: "70%", left: "15%", delay: 1.2 },
+          ].map((pill, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1 + pill.delay, duration: 0.8 }}
+              className="absolute px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[10px] font-medium tracking-widest text-[#D7E2EA]/70 uppercase"
+              style={{ top: pill.top, left: pill.left, right: pill.right }}
+            >
+              <motion.div
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 4 + idx, repeat: Infinity, ease: "easeInOut" }}
+              >
+                {pill.text}
+              </motion.div>
+            </motion.div>
+          ))}
+        </div>
+
         <FadeIn delay={0.15} y={40} className="w-full mt-6 sm:mt-4 md:-mt-5 overflow-hidden">
           <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-center text-[11vw] sm:text-[11.5vw] md:text-[12vw] lg:text-[12.5vw] select-none">
             krish sharma
@@ -50,16 +92,51 @@ export const HeroSection = ({ splineBackground }: HeroSectionProps) => {
 
       {/* Bottom Bar */}
       <div className="w-full flex justify-between items-end pb-7 sm:pb-8 md:pb-10 relative z-20 pointer-events-none">
-        <FadeIn delay={0.35} y={20} className="pointer-events-auto">
-          <p
-            className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug"
-            style={{ fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)" }}
-          >
-            <span className="block max-w-[160px] sm:max-w-[220px] md:max-w-[260px]">
-              a full-stack developer driven by building scalable web, cloud, and AI solutions
-            </span>
-          </p>
-        </FadeIn>
+        <div className="flex flex-col gap-5 max-w-[280px] sm:max-w-[340px] md:max-w-[400px]">
+          {/* Availability Badge */}
+          <FadeIn delay={0.25} y={20} className="pointer-events-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-[10px] font-medium tracking-widest uppercase w-max mb-1 shadow-[0_0_15px_rgba(34,197,94,0.15)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+            AVAILABLE FOR INTERNSHIPS
+          </FadeIn>
+
+          <FadeIn delay={0.35} y={20} className="pointer-events-auto">
+            {/* Professional Intro */}
+            <h3 className="text-[#00E5FF] font-semibold text-[10px] sm:text-xs tracking-[0.2em] mb-2 uppercase drop-shadow-[0_0_8px_rgba(0,229,255,0.5)]">
+              Full-Stack Developer • AI Engineer
+            </h3>
+            
+            {/* Supporting Text */}
+            <p
+              className="text-[#D7E2EA] font-light uppercase tracking-wide leading-relaxed"
+              style={{ fontSize: "clamp(0.75rem, 1.2vw, 1.2rem)" }}
+            >
+              Building scalable web applications, cloud-native solutions, and AI-powered digital experiences.
+            </p>
+          </FadeIn>
+
+          {/* Professional Stats */}
+          <FadeIn delay={0.45} y={20} className="pointer-events-auto flex items-center gap-4 sm:gap-6 mt-2 border-t border-white/10 pt-4 w-max">
+            <div className="flex flex-col">
+              <span className="text-white font-black text-lg drop-shadow-md">10+</span>
+              <span className="text-white/40 text-[9px] uppercase tracking-[0.2em]">Projects</span>
+            </div>
+            <div className="h-6 w-px bg-white/10"></div>
+            <div className="flex flex-col">
+              <span className="text-white font-black text-lg drop-shadow-md">AI</span>
+              <span className="text-white/40 text-[9px] uppercase tracking-[0.2em]">& Cloud</span>
+            </div>
+            <div className="h-6 w-px bg-white/10"></div>
+            <div className="flex flex-col">
+              <span className="text-white font-black text-lg drop-shadow-md">React</span>
+              <span className="text-white/40 text-[9px] uppercase tracking-[0.2em]">& Spring Boot</span>
+            </div>
+            <div className="h-6 w-px bg-white/10 hidden sm:block"></div>
+            <div className="flex flex-col hidden sm:flex">
+              <span className="text-white font-black text-lg drop-shadow-md">OSS</span>
+              <span className="text-white/40 text-[9px] uppercase tracking-[0.2em]">Open Source</span>
+            </div>
+          </FadeIn>
+        </div>
       </div>
 
       {/* Contact Button - Absolute positioned to cover Spline Watermark */}
@@ -72,8 +149,13 @@ export const HeroSection = ({ splineBackground }: HeroSectionProps) => {
       </FadeIn>
 
       {/* 3D Spline Robot */}
-      <div 
+      <motion.div 
         className="absolute inset-0 z-10 pointer-events-auto"
+        animate={{ y: [-8, 8, -8] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        style={{ 
+          filter: "drop-shadow(0 0 40px rgba(191,0,255,0.25)) drop-shadow(0 0 80px rgba(0,229,255,0.15)) brightness(1.15) contrast(1.1) saturate(1.2)" 
+        }}
         ref={(el) => {
           if (el) {
             // Intercept native wheel events in the capture phase so Spline doesn't block page scrolling
@@ -82,7 +164,7 @@ export const HeroSection = ({ splineBackground }: HeroSectionProps) => {
         }}
       >
         {splineBackground}
-      </div>
+      </motion.div>
     </section>
   );
 };

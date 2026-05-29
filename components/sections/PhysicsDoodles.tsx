@@ -82,14 +82,31 @@ export const PhysicsDoodles = () => {
     mouseConstraint.mouse.element.removeEventListener("mousewheel", mouseConstraint.mouse.mousewheel);
     mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);
 
+    // Fix dragging glitch: make container solid during drag so mousemove isn't lost
+    Matter.Events.on(mouseConstraint, "startdrag", () => {
+      if (containerRef.current) containerRef.current.style.pointerEvents = "auto";
+    });
+    Matter.Events.on(mouseConstraint, "enddrag", () => {
+      if (containerRef.current) containerRef.current.style.pointerEvents = "none";
+    });
+
     // Run the engine
     const runner = Runner.create();
     Runner.run(runner, engine);
 
-    // Sync DOM elements
+    // Sync DOM elements and rescue fallen bodies
     let animationFrame: number;
     const updateLoop = () => {
       cardBodies.forEach((body, i) => {
+        // Rescue bodies that fell out of bounds (e.g. if container height was 0 on mount)
+        if (body.position.y > height + 200) {
+          Matter.Body.setPosition(body, {
+            x: Math.random() * (width - 150) + 75,
+            y: -200,
+          });
+          Matter.Body.setVelocity(body, { x: 0, y: 0 });
+        }
+
         if (cardRefs.current[i]) {
           const x = body.position.x - cardWidth / 2;
           const y = body.position.y - cardHeight / 2;
