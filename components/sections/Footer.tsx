@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { 
   Twitter, Linkedin, Github, Instagram, Facebook, MessageCircle,
   Home, User, Code, LayoutGrid, Mail,
-  Monitor, Bot, PenTool, Settings,
+  Monitor, Bot, Cloud, Database, PieChart,
   Folder, FileText, Wifi, HelpCircle,
   Send, ArrowUp
 } from "lucide-react";
@@ -28,10 +28,11 @@ const exploreLinks = [
 ];
 
 const servicesLinks = [
-  { name: "Web Development", icon: Monitor, href: "#services" },
-  { name: "AI Solutions", icon: Bot, href: "#services" },
-  { name: "UI/UX Design", icon: PenTool, href: "#services" },
-  { name: "Tech Consulting", icon: Settings, href: "#services" },
+  { name: "Full-Stack Dev", icon: Monitor, href: "#services" },
+  { name: "Cloud & DevOps", icon: Cloud, href: "#services" },
+  { name: "AI & ML", icon: Bot, href: "#services" },
+  { name: "Data Viz & Analytics", icon: PieChart, href: "#services" },
+  { name: "Database Architecture", icon: Database, href: "#services" },
 ];
 
 const resourceLinks = [
