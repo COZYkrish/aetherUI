@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "KRISH -- 3D Creator",
+  title: "aetherUI",
   description: "A 3D creator driven by crafting striking and unforgettable projects",
 };
 
