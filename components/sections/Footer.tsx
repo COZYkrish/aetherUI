@@ -9,6 +9,7 @@ import {
   Send, ArrowUp
 } from "lucide-react";
 import { FadeIn } from "../ui/FadeIn";
+import { PhysicsDoodles } from "./PhysicsDoodles";
 
 const socialLinks = [
   { icon: Twitter, href: "https://twitter.com" },
@@ -65,8 +66,12 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#050607] text-[#D7E2EA] pt-20 pb-10 px-6 sm:px-10 md:px-12 relative z-20 border-t border-white/5">
-      <div className="max-w-7xl mx-auto">
+    <footer className="bg-[#050607] text-[#D7E2EA] pt-20 pb-10 px-6 sm:px-10 md:px-12 relative z-20 border-t border-white/5 overflow-hidden">
+      {/* Interactive Physics Doodles Overlay */}
+      <PhysicsDoodles />
+
+      <div className="max-w-7xl mx-auto relative z-20 pointer-events-none">
+        {/* We need the footer content to allow clicks to pass through to the doodles behind them in empty spaces, but links must be clickable. */}
         
         {/* Top Grid Area */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
@@ -96,7 +101,7 @@ export const Footer = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/15 hover:border-white/30 transition-all duration-300"
+                    className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/15 hover:border-white/30 transition-all duration-300 pointer-events-auto"
                   >
                     <social.icon size={18} className="text-[#D7E2EA]/80 hover:text-white" />
                   </a>
@@ -114,7 +119,7 @@ export const Footer = () => {
               <ul className="flex flex-col gap-4">
                 {exploreLinks.map((link) => (
                   <li key={link.name}>
-                    <a href={link.href} className="flex items-center gap-3 text-sm text-[#D7E2EA]/60 hover:text-[#00E5FF] transition-colors group">
+                    <a href={link.href} className="flex items-center gap-3 text-sm text-[#D7E2EA]/60 hover:text-[#00E5FF] transition-colors group pointer-events-auto">
                       <link.icon size={16} className="text-[#00E5FF] opacity-80 group-hover:opacity-100" />
                       <span>{link.name}</span>
                     </a>
@@ -129,7 +134,7 @@ export const Footer = () => {
               <ul className="flex flex-col gap-4">
                 {servicesLinks.map((link) => (
                   <li key={link.name}>
-                    <a href={link.href} className="flex items-center gap-3 text-sm text-[#D7E2EA]/60 hover:text-[#00E5FF] transition-colors group">
+                    <a href={link.href} className="flex items-center gap-3 text-sm text-[#D7E2EA]/60 hover:text-[#00E5FF] transition-colors group pointer-events-auto">
                       <link.icon size={16} className="text-[#00E5FF] opacity-80 group-hover:opacity-100" />
                       <span>{link.name}</span>
                     </a>
@@ -144,7 +149,7 @@ export const Footer = () => {
               <ul className="flex flex-col gap-4">
                 {resourceLinks.map((link) => (
                   <li key={link.name}>
-                    <a href={link.href} className="flex items-center gap-3 text-sm text-[#D7E2EA]/60 hover:text-[#00E5FF] transition-colors group">
+                    <a href={link.href} className="flex items-center gap-3 text-sm text-[#D7E2EA]/60 hover:text-[#00E5FF] transition-colors group pointer-events-auto">
                       <link.icon size={16} className="text-[#00E5FF] opacity-80 group-hover:opacity-100" />
                       <span>{link.name}</span>
                     </a>
@@ -155,28 +160,8 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom CTA Card */}
-        <FadeIn delay={0.4} y={30} className="relative">
-          <div className="bg-[#0A1016] border border-[#16212D] rounded-[24px] p-10 sm:p-14 flex flex-col items-center justify-center text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#F5DEB3] mb-3">
-              Let's Work Together!
-            </h2>
-            <p className="text-[#D7E2EA]/60 text-sm sm:text-base font-light mb-8 max-w-md">
-              Have a project in mind? I'd love to hear about it.
-            </p>
-            <a
-              href="#contact"
-              onClick={scrollToContact}
-              className="bg-[#00D0FF] hover:bg-[#00E5FF] text-black font-semibold rounded-lg px-8 py-4 flex items-center gap-3 transition-colors duration-300 shadow-[0_0_20px_rgba(0,208,255,0.3)] hover:shadow-[0_0_30px_rgba(0,229,255,0.5)]"
-            >
-              <Send size={18} />
-              Start a Conversation
-            </a>
-          </div>
-        </FadeIn>
-
         {/* Back to Top */}
-        <FadeIn delay={0.5} y={0} className="mt-8 flex justify-end">
+        <FadeIn delay={0.5} y={0} className="mt-8 flex justify-end pointer-events-auto">
           <button
             onClick={scrollToTop}
             className="w-12 h-12 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center text-[#D7E2EA]/60 hover:text-white hover:bg-white/10 transition-all duration-300"

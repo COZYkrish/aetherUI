@@ -210,10 +210,19 @@ export const ContactSection = () => {
 
                   <button
                     type="submit"
-                    className="w-full sm:w-auto self-start mt-2 group relative overflow-hidden rounded-full border border-[#D7E2EA]/40 px-10 py-4 font-medium uppercase tracking-widest transition-all hover:bg-[#D7E2EA]/10 hover:border-[#D7E2EA] flex items-center justify-center gap-3 bg-white/5"
+                    className="relative group w-full sm:w-auto self-start mt-4 outline-none border-none bg-transparent"
                   >
-                    <span>SEND MESSAGE</span>
-                    <Send className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    {/* Base / Outer edge of the keycap */}
+                    <div className="absolute inset-0 bg-[#0A0A0A] rounded-[24px] shadow-[0_15px_25px_rgba(0,0,0,0.8)] border border-black"></div>
+                    
+                    {/* Inner slope gradient to give the 3D rim effect */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#3A3A3A] via-[#1A1A1A] to-[#050505] rounded-[24px] opacity-80"></div>
+
+                    {/* Top Face (The actual pressable surface) */}
+                    <div className="relative bg-[#262626] rounded-[18px] mx-2 mt-2 mb-4 px-10 py-5 flex items-center justify-center gap-3 shadow-[inset_0_2px_2px_rgba(255,255,255,0.15),inset_0_-2px_4px_rgba(0,0,0,0.4),0_6px_10px_rgba(0,0,0,0.6)] transition-all duration-100 active:translate-y-[8px] active:mb-2 active:shadow-[inset_0_2px_2px_rgba(255,255,255,0.1),inset_0_-2px_4px_rgba(0,0,0,0.4),0_0px_0px_rgba(0,0,0,0.6)] group-hover:bg-[#2F2F2F]">
+                      <span className="font-bold uppercase tracking-[0.25em] text-[#E0E0E0] text-sm sm:text-base drop-shadow-lg">SEND MESSAGE</span>
+                      <Send className="w-5 h-5 text-[#E0E0E0] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 drop-shadow-lg" />
+                    </div>
                   </button>
                 </form>
               </div>
