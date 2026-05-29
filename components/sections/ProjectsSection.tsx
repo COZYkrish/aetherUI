@@ -6,6 +6,25 @@ import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { FadeIn } from "../ui/FadeIn";
 import { LiveProjectButton } from "../ui/Buttons";
 import { projects, Project } from "@/lib/data";
+import { Github } from "lucide-react";
+
+const RetroGithubButton = ({ href }: { href: string }) => {
+  return (
+    <a 
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block cursor-pointer border-4 border-black bg-gray-500 pb-[10px] transition-all duration-100 ease-in-out select-none active:pb-0 active:mb-[10px] active:translate-y-[10px]"
+    >
+      <div className="bg-[#dddddd] border-4 border-white px-2 py-1 flex items-center justify-center">
+        <span className="text-[1.1em] tracking-[1px] text-black font-bold flex items-center gap-2">
+          <Github size={16} />
+          GitHub
+        </span>
+      </div>
+    </a>
+  );
+};
 
 const featuredProjects = projects.filter((project) => project.featured).slice(0, 4);
 
@@ -113,7 +132,7 @@ const ProjectCard = ({
             </div>
           </div>
           {project.github && (
-             <LiveProjectButton href={project.github} text="GitHub" />
+             <RetroGithubButton href={project.github} />
           )}
         </div>
 
