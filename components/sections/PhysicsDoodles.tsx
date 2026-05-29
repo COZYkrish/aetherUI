@@ -28,7 +28,6 @@ export const PhysicsDoodles = () => {
 
     // Module aliases
     const Engine = Matter.Engine,
-      Render = Matter.Render,
       Runner = Matter.Runner,
       Bodies = Matter.Bodies,
       Composite = Matter.Composite,
@@ -53,7 +52,7 @@ export const PhysicsDoodles = () => {
     const cardWidth = isMobile ? 80 : 120;
     const cardHeight = isMobile ? 100 : 140;
     
-    const cardBodies = doodles.map((doodle, i) => {
+    const cardBodies = doodles.map((doodle) => {
       const x = Math.random() * (width - (cardWidth + 30)) + (cardWidth / 2 + 15);
       const y = Math.random() * -500 - 100; // Spawn above the view
       
@@ -81,7 +80,9 @@ export const PhysicsDoodles = () => {
 
     Composite.add(engine.world, mouseConstraint);
     
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mouseConstraint.mouse.element.removeEventListener("mousewheel", (mouseConstraint.mouse as any).mousewheel);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", (mouseConstraint.mouse as any).mousewheel);
 
     // Fix dragging glitch: make container solid during drag so mousemove isn't lost

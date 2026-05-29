@@ -1,12 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { 
   Twitter, Linkedin, Github, Instagram, Facebook, MessageCircle,
   Home, User, Code, LayoutGrid, Mail,
   Monitor, Bot, Cloud, Database, PieChart,
   Folder, FileText, Wifi, HelpCircle,
-  Send, ArrowUp
+  ArrowUp
 } from "lucide-react";
 import { FadeIn } from "../ui/FadeIn";
 import { PhysicsDoodles } from "./PhysicsDoodles";
@@ -51,17 +50,6 @@ export const Footer = () => {
       lenis.scrollTo(0);
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
-
-  const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const lenis = (window as unknown as { lenis?: { scrollTo: (target: string) => void } }).lenis;
-    if (lenis) {
-      lenis.scrollTo("#contact");
-    } else {
-      const contactSection = document.getElementById("contact");
-      if (contactSection) contactSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 

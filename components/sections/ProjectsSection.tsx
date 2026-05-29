@@ -1,10 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { FadeIn } from "../ui/FadeIn";
-import { LiveProjectButton } from "../ui/Buttons";
 import { projects, Project } from "@/lib/data";
 import { Github } from "lucide-react";
 

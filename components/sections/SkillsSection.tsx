@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FadeIn } from "../ui/FadeIn";
-import { useRouter } from "next/navigation";
 
 const LANGUAGES = [
   { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
@@ -30,7 +29,6 @@ const SKILLS = [
 
 export const SkillsSection = () => {
   const [activeTab, setActiveTab] = useState<"skills" | "languages">("skills");
-  const router = useRouter();
 
   const currentItems = activeTab === "skills" ? SKILLS : LANGUAGES;
   const isSkills = activeTab === "skills";
