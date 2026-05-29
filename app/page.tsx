@@ -8,6 +8,7 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { Footer } from "@/components/sections/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import LoaderWrapper from "@/components/LoaderWrapper";
@@ -32,6 +33,7 @@ export default function Home() {
           <ProjectsSection />
           <SkillsSection />
           <ContactSection />
+          <Footer />
         </main>
       </SmoothScrollProvider>
     </LoaderWrapper>

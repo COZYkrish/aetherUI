@@ -166,12 +166,12 @@ export const ProjectsSection = () => {
           <p className="mb-6 text-xs font-semibold uppercase tracking-[0.34em] text-[#D7E2EA]/45">
             Explore the complete repository universe
           </p>
-          <Link
+          <a
             href="/projects"
             className="rounded-full border-2 border-[#D7E2EA] px-10 py-4 text-sm font-semibold uppercase tracking-[0.28em] text-[#D7E2EA] transition-colors hover:bg-[#D7E2EA] hover:text-[#0C0C0C] sm:px-12 sm:py-5"
           >
             View More
-          </Link>
+          </a>
         </motion.div>
       </div>
     </section>

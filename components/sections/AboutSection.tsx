@@ -2,7 +2,7 @@
 
 import { Github, MapPin, Sparkles } from "lucide-react";
 import { FadeIn } from "../ui/FadeIn";
-import { personalInfo, stats, techStack } from "@/lib/data";
+import { personalInfo, stats } from "@/lib/data";
 import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform, animate, useInView } from "framer-motion";
 

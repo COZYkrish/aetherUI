@@ -123,15 +123,8 @@ export const SkillsSection = () => {
 
         {/* View All Button */}
         <FadeIn delay={0.2} y={30} className="mt-20 sm:mt-28 z-20">
-          <button
-            onClick={() => {
-              // Immediately reset Lenis smooth scroll engine to position 0 before navigating
-              const lenis = (window as unknown as { lenis?: { scrollTo: (target: number, opts?: object) => void } }).lenis;
-              if (lenis) lenis.scrollTo(0, { immediate: true });
-              document.documentElement.scrollTop = 0;
-              document.body.scrollTop = 0;
-              router.push("/demos");
-            }}
+          <a
+            href="/demos"
             className="group inline-block cursor-pointer"
           >
             <div className="bg-[#00D2D3] border-b-[6px] border-[#019999] rounded-xl px-12 py-5 active:border-b-0 active:translate-y-[6px] transition-all flex items-center justify-center shadow-xl group-hover:bg-[#1AE2E3]">
@@ -139,7 +132,7 @@ export const SkillsSection = () => {
                 View All
               </span>
             </div>
-          </button>
+          </a>
         </FadeIn>
 
       </div>
