@@ -79,8 +79,8 @@ export const PhysicsDoodles = () => {
 
     Composite.add(engine.world, mouseConstraint);
     
-    mouseConstraint.mouse.element.removeEventListener("mousewheel", mouseConstraint.mouse.mousewheel);
-    mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);
+    mouseConstraint.mouse.element.removeEventListener("mousewheel", (mouseConstraint.mouse as any).mousewheel);
+    mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", (mouseConstraint.mouse as any).mousewheel);
 
     // Fix dragging glitch: make container solid during drag so mousemove isn't lost
     Matter.Events.on(mouseConstraint, "startdrag", () => {

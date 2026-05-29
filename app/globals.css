@@ -24,9 +24,14 @@ html, body, #root, .main-wrapper {
   background-clip: text;
 }
 
-/* Hide Spline Logo */
-div > a[href*="spline.design"], #logo {
+/* Hide Spline Logo & its Container */
+div > a[href*="spline.design"], 
+div:has(> a[href*="spline.design"]),
+#logo, 
+.spline-watermark,
+spline-viewer::part(logo) {
   display: none !important;
   opacity: 0 !important;
   pointer-events: none !important;
+  visibility: hidden !important;
 }
