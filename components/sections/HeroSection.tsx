@@ -42,12 +42,12 @@ export const HeroSection = ({ splineBackground }: HeroSectionProps) => {
           </div>
 
           {/* Links */}
-          <div className="flex items-center gap-4 sm:gap-8 md:gap-12">
+          <div className="flex items-center gap-3 sm:gap-8 md:gap-12">
             {["About", "Services", "Projects"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-[#D7E2EA] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-lg lg:text-[1.2rem] hover:opacity-70 transition-opacity duration-200"
+                className="text-[#D7E2EA] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-lg lg:text-[1.2rem] hover:opacity-70 transition-opacity duration-200 min-h-[44px] flex items-center"
               >
                 {item}
               </a>
@@ -108,7 +108,7 @@ export const HeroSection = ({ splineBackground }: HeroSectionProps) => {
 
       {/* Bottom Bar */}
       <div className="w-full flex justify-between items-end pb-7 sm:pb-8 md:pb-10 relative z-20 pointer-events-none">
-        <div className="flex flex-col gap-5 max-w-[280px] sm:max-w-[340px] md:max-w-[400px]">
+        <div className="flex flex-col gap-3 sm:gap-5 max-w-[240px] sm:max-w-[340px] md:max-w-[400px]">
           {/* Availability Badge */}
           <FadeIn delay={0.25} y={20} className="pointer-events-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-[10px] font-medium tracking-widest uppercase w-max mb-1 shadow-[0_0_15px_rgba(34,197,94,0.15)]">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
@@ -138,7 +138,7 @@ export const HeroSection = ({ splineBackground }: HeroSectionProps) => {
           </FadeIn>
 
           {/* Professional Stats */}
-          <FadeIn delay={0.45} y={20} className="pointer-events-auto flex items-center gap-4 sm:gap-6 mt-2 border-t border-white/10 pt-4 w-max">
+          <FadeIn delay={0.45} y={20} className="pointer-events-auto flex items-center gap-3 sm:gap-4 md:gap-6 mt-2 border-t border-white/10 pt-3 sm:pt-4 w-max">
             <div className="flex flex-col">
               <span className="text-white font-black text-lg drop-shadow-md">20+</span>
               <span className="text-white/40 text-[9px] uppercase tracking-[0.2em]">Projects</span>

@@ -37,16 +37,16 @@ const enrichedProjects = githubProjects.map((repo) => {
 export default function ProjectsArchivePage() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#050607] text-[#D7E2EA]">
-      <section className="relative min-h-screen px-5 py-8 sm:px-8 md:px-12">
+      <section className="relative min-h-screen px-4 py-6 sm:px-5 sm:py-8 md:px-8 lg:px-12 overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
           <motion.div
-            className="absolute left-[8%] top-[14%] h-56 w-56 rounded-[32px] border border-cyan-300/20 bg-cyan-300/10 blur-[1px]"
+            className="absolute left-[8%] top-[14%] h-32 w-32 sm:h-56 sm:w-56 rounded-[32px] border border-cyan-300/20 bg-cyan-300/10 blur-[1px]"
             animate={{ rotateX: [45, 62, 45], rotateY: [-20, 28, -20], y: [0, -28, 0] }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
             style={{ transformStyle: "preserve-3d" }}
           />
           <motion.div
-            className="absolute right-[10%] top-[24%] h-72 w-72 rounded-full border border-amber-300/20 bg-amber-300/10"
+            className="absolute right-[10%] top-[24%] h-40 w-40 sm:h-72 sm:w-72 rounded-full border border-amber-300/20 bg-amber-300/10"
             animate={{ scale: [1, 1.12, 1], rotate: [0, 18, 0] }}
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -100,7 +100,7 @@ export default function ProjectsArchivePage() {
         </div>
       </section>
 
-      <section className="relative z-10 px-5 pb-28 sm:px-8 md:px-12">
+      <section className="relative z-10 px-4 pb-20 sm:px-5 sm:pb-28 md:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 flex flex-col justify-between gap-5 border-t border-white/10 pt-10 md:flex-row md:items-end">
             <div>
@@ -120,7 +120,7 @@ export default function ProjectsArchivePage() {
         </div>
       </section>
 
-      <section className="relative z-10 px-5 pb-32 sm:px-8 md:px-12">
+      <section className="relative z-10 px-4 pb-24 sm:px-5 sm:pb-32 md:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 flex flex-col justify-between gap-5 border-t border-white/10 pt-10 md:flex-row md:items-end">
             <div>
@@ -154,7 +154,7 @@ function ProjectPanel({
 }) {
   return (
     <motion.article
-      className={`group relative overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.035] p-5 backdrop-blur-md ${large ? "min-h-[360px]" : "min-h-[300px]"}`}
+      className={`group relative overflow-hidden rounded-[18px] sm:rounded-[22px] border border-white/10 bg-white/[0.035] p-4 sm:p-5 backdrop-blur-md ${large ? "min-h-[300px] sm:min-h-[360px]" : "min-h-[260px] sm:min-h-[300px]"}`}
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}

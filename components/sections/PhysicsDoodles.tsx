@@ -26,9 +26,15 @@ export const PhysicsDoodles = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    // Determine card sizes based on screen width
+    const isMobile = window.innerWidth < 640;
+    const cardWidth = isMobile ? 90 : 120;
+    const cardHeight = isMobile ? 105 : 140;
+    // Show fewer doodles on mobile to prevent overcrowding
+    const visibleDoodles = isMobile ? doodles.slice(0, 8) : doodles;
+
     // Module aliases
     const Engine = Matter.Engine,
-      Render = Matter.Render,
       Runner = Matter.Runner,
       Bodies = Matter.Bodies,
       Composite = Matter.Composite,
@@ -48,10 +54,7 @@ export const PhysicsDoodles = () => {
     const wallRight = Bodies.rectangle(width + 25, height / 2, 50, height * 2, { isStatic: true });
 
     // Create bodies for each doodle
-    const cardWidth = 120;
-    const cardHeight = 140;
-    
-    const cardBodies = doodles.map((doodle, i) => {
+    const cardBodies = visibleDoodles.map((doodle) => {
       const x = Math.random() * (width - 150) + 75;
       const y = Math.random() * -500 - 100; // Spawn above the view
       
@@ -79,8 +82,8 @@ export const PhysicsDoodles = () => {
 
     Composite.add(engine.world, mouseConstraint);
     
-    mouseConstraint.mouse.element.removeEventListener("mousewheel", (mouseConstraint.mouse as any).mousewheel);
-    mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", (mouseConstraint.mouse as any).mousewheel);
+    mouseConstraint.mouse.element.removeEventListener("mousewheel", (mouseConstraint.mouse as unknown as { mousewheel: EventListener }).mousewheel);
+    mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", (mouseConstraint.mouse as unknown as { mousewheel: EventListener }).mousewheel);
 
     // Fix dragging glitch: make container solid during drag so mousemove isn't lost
     Matter.Events.on(mouseConstraint, "startdrag", () => {
@@ -142,6 +145,7 @@ export const PhysicsDoodles = () => {
     };
   }, []);
 
+  // Determine card display sizes responsively (CSS handles visual, JS handles physics)
   return (
     <div 
       ref={containerRef} 
@@ -153,19 +157,19 @@ export const PhysicsDoodles = () => {
           ref={(el) => {
             cardRefs.current[i] = el;
           }}
-          className="absolute top-0 left-0 w-[120px] h-[140px] bg-[#F5F1E7] rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col pointer-events-auto cursor-grab active:cursor-grabbing select-none border border-black/5"
+          className="absolute top-0 left-0 w-[90px] h-[105px] sm:w-[120px] sm:h-[140px] bg-[#F5F1E7] rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col pointer-events-auto cursor-grab active:cursor-grabbing select-none border border-black/5"
           style={{ willChange: "transform" }}
         >
           {/* Top tape/margin area */}
-          <div className="h-4 bg-[#E8E2D2]/50 w-full mb-2"></div>
+          <div className="h-3 sm:h-4 bg-[#E8E2D2]/50 w-full mb-1 sm:mb-2"></div>
           
           {/* Main doodle area */}
-          <div className="flex-1 flex items-center justify-center text-4xl">
+          <div className="flex-1 flex items-center justify-center text-2xl sm:text-4xl">
             {doodle.emoji}
           </div>
           
           {/* Bottom text */}
-          <div className="h-[40px] border-t border-black/10 flex items-center justify-center font-caveat text-black/80 font-medium text-sm tracking-wide">
+          <div className="h-[30px] sm:h-[40px] border-t border-black/10 flex items-center justify-center font-caveat text-black/80 font-medium text-xs sm:text-sm tracking-wide">
             {doodle.text}
           </div>
         </div>

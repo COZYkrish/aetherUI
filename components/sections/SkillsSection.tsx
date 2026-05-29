@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FadeIn } from "../ui/FadeIn";
-import { useRouter } from "next/navigation";
 
 const LANGUAGES = [
   { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
@@ -30,7 +29,6 @@ const SKILLS = [
 
 export const SkillsSection = () => {
   const [activeTab, setActiveTab] = useState<"skills" | "languages">("skills");
-  const router = useRouter();
 
   const currentItems = activeTab === "skills" ? SKILLS : LANGUAGES;
   const isSkills = activeTab === "skills";
@@ -53,7 +51,7 @@ export const SkillsSection = () => {
       <div className="flex flex-col items-center w-full">
         
         {/* Toggle Switch */}
-        <FadeIn delay={0} y={20} className="mb-20 sm:mb-28 z-20">
+        <FadeIn delay={0} y={20} className="mb-14 sm:mb-20 md:mb-28 z-20">
           <motion.button 
             onClick={() => setActiveTab(isSkills ? "languages" : "skills")}
             className="relative flex items-center bg-[#151515] rounded-[30px] p-2 w-[220px] h-[64px] cursor-pointer shadow-2xl transition-colors"

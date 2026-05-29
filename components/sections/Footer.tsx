@@ -1,12 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+
 import { 
   Twitter, Linkedin, Github, Instagram, Facebook, MessageCircle,
   Home, User, Code, LayoutGrid, Mail,
   Monitor, Bot, Cloud, Database, PieChart,
   Folder, FileText, Wifi, HelpCircle,
-  Send, ArrowUp
+  ArrowUp
 } from "lucide-react";
 import { FadeIn } from "../ui/FadeIn";
 import { PhysicsDoodles } from "./PhysicsDoodles";
@@ -54,19 +54,10 @@ export const Footer = () => {
     }
   };
 
-  const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const lenis = (window as unknown as { lenis?: { scrollTo: (target: string) => void } }).lenis;
-    if (lenis) {
-      lenis.scrollTo("#contact");
-    } else {
-      const contactSection = document.getElementById("contact");
-      if (contactSection) contactSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+
 
   return (
-    <footer className="bg-[#050607] text-[#D7E2EA] pt-20 pb-10 px-6 sm:px-10 md:px-12 relative z-20 border-t border-white/5 overflow-hidden">
+    <footer className="bg-[#050607] text-[#D7E2EA] pt-16 sm:pt-20 pb-8 sm:pb-10 px-4 sm:px-6 md:px-10 lg:px-12 relative z-20 border-t border-white/5 overflow-hidden">
       {/* Interactive Physics Doodles Overlay */}
       <PhysicsDoodles />
 
@@ -82,7 +73,7 @@ export const Footer = () => {
               {/* Logo */}
               <div className="flex items-baseline mb-6">
                 <span
-                  className="text-3xl tracking-tight drop-shadow-md"
+                  className="text-2xl sm:text-3xl tracking-tight drop-shadow-md"
                   style={{ fontFamily: "'Press Start 2P', monospace" }}
                 >
                   <span style={{ color: "#BF00FF", textShadow: "0 0 10px rgba(191,0,255,0.8)" }}>aether</span>

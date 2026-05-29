@@ -1,10 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
+
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { FadeIn } from "../ui/FadeIn";
-import { LiveProjectButton } from "../ui/Buttons";
 import { projects, Project } from "@/lib/data";
 import { Github } from "lucide-react";
 
@@ -106,20 +105,20 @@ const ProjectCard = ({
   const targetScale = 1 - (totalCards - 1 - index) * 0.03;
   const scale = useTransform(progress, [0, 1], [1, targetScale]);
   
-  const stackOffset = 34;
-  const topOffset = 88 + index * stackOffset;
+  const stackOffset = 24;
+  const topOffset = 72 + index * stackOffset;
 
   return (
-    <div className="sticky flex h-[82vh] items-start justify-center" style={{ top: topOffset, zIndex: index + 1 }}>
+    <div className="sticky flex h-[74vh] sm:h-[82vh] items-start justify-center" style={{ top: topOffset, zIndex: index + 1 }}>
       <motion.div 
         style={{ scale }}
-        className="relative flex h-[76vh] min-h-[560px] max-h-[760px] w-full max-w-7xl transform-origin-top flex-col gap-6 overflow-hidden rounded-[40px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:gap-8 sm:rounded-[50px] sm:p-6 md:gap-10 md:rounded-[60px] md:p-8"
+        className="relative flex h-[68vh] sm:h-[76vh] min-h-[400px] sm:min-h-[560px] max-h-[760px] w-full max-w-7xl transform-origin-top flex-col gap-4 overflow-hidden rounded-[24px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-3 sm:gap-8 sm:rounded-[40px] sm:p-6 md:gap-10 md:rounded-[60px] md:p-8"
       >
         <div className="absolute inset-0 -z-10 bg-[#0C0C0C]" />
         {/* Top Row */}
         <div className="relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
           <div className="flex items-center gap-6 sm:gap-10">
-            <span className="font-black text-[#D7E2EA] leading-none" style={{ fontSize: "clamp(3rem, 10vw, 120px)" }}>
+            <span className="font-black text-[#D7E2EA] leading-none" style={{ fontSize: "clamp(2rem, 10vw, 120px)" }}>
               {String(index + 1).padStart(2, '0')}
             </span>
             <div className="flex flex-col">
@@ -136,7 +135,7 @@ const ProjectCard = ({
           )}
         </div>
 
-        <div className="relative z-10 flex min-h-0 w-full flex-1 overflow-hidden rounded-[28px] sm:rounded-[36px] md:rounded-[44px]">
+        <div className="relative z-10 flex min-h-0 w-full flex-1 overflow-hidden rounded-[16px] sm:rounded-[28px] md:rounded-[36px] lg:rounded-[44px]">
           <ProjectShowcaseVisual project={project} index={index} />
         </div>
       </motion.div>
@@ -152,7 +151,7 @@ export const ProjectsSection = () => {
   });
 
   return (
-    <section id="projects" className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-20 px-5 sm:px-8 md:px-10 pt-20 sm:pt-24 md:pt-32 pb-32">
+    <section id="projects" className="bg-[#0C0C0C] rounded-t-[28px] sm:rounded-t-[40px] md:rounded-t-[50px] lg:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-20 px-3 sm:px-5 md:px-8 lg:px-10 pt-16 sm:pt-20 md:pt-24 lg:pt-32 pb-20 sm:pb-32">
       <FadeIn delay={0} y={40} className="w-full mb-16 sm:mb-20 md:mb-28 text-center">
         <h2 className="hero-heading font-black uppercase leading-none" style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}>
           Project
@@ -162,7 +161,7 @@ export const ProjectsSection = () => {
         </p>
       </FadeIn>
 
-      <div ref={containerRef} className="relative w-full pb-[22vh]">
+      <div ref={containerRef} className="relative w-full pb-[14vh] sm:pb-[22vh]">
         {featuredProjects.map((project, i) => (
           <ProjectCard 
             key={project.id} 
