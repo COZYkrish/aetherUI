@@ -205,7 +205,7 @@ const TypewriterCode = ({ lines }: { lines: { text: string, type: string }[] }) 
   };
 
   return (
-    <div className="font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto whitespace-pre">
+    <div className="font-mono text-sm leading-relaxed overflow-x-auto whitespace-pre">
       {lines.slice(0, progress.line === lines.length ? lines.length : progress.line + 1).map((line, i) => {
         const isCurrentLine = i === progress.line;
         const textToDisplay = isCurrentLine ? line.text.substring(0, progress.char) : line.text;
@@ -293,7 +293,7 @@ export default function DemosPage() {
       <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
         style={{ backgroundImage: 'radial-gradient(#ffffff 2px, transparent 2px)', backgroundSize: '60px 60px' }} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 relative z-10 flex flex-col items-center">
+      <div className="max-w-7xl mx-auto px-6 py-12 relative z-10 flex flex-col items-center">
 
         {/* Navigation */}
         <div className="w-full mb-4 relative z-20">
@@ -329,7 +329,7 @@ export default function DemosPage() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 w-full mb-20 sm:mb-32">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full mb-32">
           {DEV_TOOLS.map((tool) => (
             <IconCard key={tool.name} name={tool.name} icon={tool.icon} />
           ))}
@@ -374,7 +374,7 @@ export default function DemosPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 w-full mb-20 sm:mb-32">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full mb-32">
           <AnimatePresence mode="popLayout">
             {filteredSkills.map((skill) => (
               <motion.div
@@ -414,7 +414,7 @@ export default function DemosPage() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8 w-full mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 w-full mb-20">
           {DEMOS.map((demo, i) => (
             <motion.div
               key={demo.language}

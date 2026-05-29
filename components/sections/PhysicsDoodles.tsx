@@ -26,15 +26,9 @@ export const PhysicsDoodles = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Determine card sizes based on screen width
-    const isMobile = window.innerWidth < 640;
-    const cardWidth = isMobile ? 90 : 120;
-    const cardHeight = isMobile ? 105 : 140;
-    // Show fewer doodles on mobile to prevent overcrowding
-    const visibleDoodles = isMobile ? doodles.slice(0, 8) : doodles;
-
     // Module aliases
     const Engine = Matter.Engine,
+      Render = Matter.Render,
       Runner = Matter.Runner,
       Bodies = Matter.Bodies,
       Composite = Matter.Composite,
@@ -54,8 +48,13 @@ export const PhysicsDoodles = () => {
     const wallRight = Bodies.rectangle(width + 25, height / 2, 50, height * 2, { isStatic: true });
 
     // Create bodies for each doodle
-    const cardBodies = visibleDoodles.map((doodle) => {
-      const x = Math.random() * (width - 150) + 75;
+    // Responsive card dimensions
+    const isMobile = window.innerWidth < 640;
+    const cardWidth = isMobile ? 80 : 120;
+    const cardHeight = isMobile ? 100 : 140;
+    
+    const cardBodies = doodles.map((doodle, i) => {
+      const x = Math.random() * (width - (cardWidth + 30)) + (cardWidth / 2 + 15);
       const y = Math.random() * -500 - 100; // Spawn above the view
       
       return Bodies.rectangle(x, y, cardWidth, cardHeight, {
@@ -82,8 +81,8 @@ export const PhysicsDoodles = () => {
 
     Composite.add(engine.world, mouseConstraint);
     
-    mouseConstraint.mouse.element.removeEventListener("mousewheel", (mouseConstraint.mouse as unknown as { mousewheel: EventListener }).mousewheel);
-    mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", (mouseConstraint.mouse as unknown as { mousewheel: EventListener }).mousewheel);
+    mouseConstraint.mouse.element.removeEventListener("mousewheel", (mouseConstraint.mouse as any).mousewheel);
+    mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", (mouseConstraint.mouse as any).mousewheel);
 
     // Fix dragging glitch: make container solid during drag so mousemove isn't lost
     Matter.Events.on(mouseConstraint, "startdrag", () => {
@@ -104,7 +103,7 @@ export const PhysicsDoodles = () => {
         // Rescue bodies that fell out of bounds (e.g. if container height was 0 on mount)
         if (body.position.y > height + 200) {
           Matter.Body.setPosition(body, {
-            x: Math.random() * (width - 150) + 75,
+            x: Math.random() * (width - (cardWidth + 30)) + (cardWidth / 2 + 15),
             y: -200,
           });
           Matter.Body.setVelocity(body, { x: 0, y: 0 });
@@ -145,7 +144,6 @@ export const PhysicsDoodles = () => {
     };
   }, []);
 
-  // Determine card display sizes responsively (CSS handles visual, JS handles physics)
   return (
     <div 
       ref={containerRef} 
@@ -157,11 +155,11 @@ export const PhysicsDoodles = () => {
           ref={(el) => {
             cardRefs.current[i] = el;
           }}
-          className="absolute top-0 left-0 w-[90px] h-[105px] sm:w-[120px] sm:h-[140px] bg-[#F5F1E7] rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col pointer-events-auto cursor-grab active:cursor-grabbing select-none border border-black/5"
+          className="absolute top-0 left-0 w-[80px] h-[100px] sm:w-[120px] sm:h-[140px] bg-[#F5F1E7] rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col pointer-events-auto cursor-grab active:cursor-grabbing select-none border border-black/5"
           style={{ willChange: "transform" }}
         >
           {/* Top tape/margin area */}
-          <div className="h-3 sm:h-4 bg-[#E8E2D2]/50 w-full mb-1 sm:mb-2"></div>
+          <div className="h-2 sm:h-4 bg-[#E8E2D2]/50 w-full mb-1 sm:mb-2"></div>
           
           {/* Main doodle area */}
           <div className="flex-1 flex items-center justify-center text-2xl sm:text-4xl">
@@ -169,7 +167,7 @@ export const PhysicsDoodles = () => {
           </div>
           
           {/* Bottom text */}
-          <div className="h-[30px] sm:h-[40px] border-t border-black/10 flex items-center justify-center font-caveat text-black/80 font-medium text-xs sm:text-sm tracking-wide">
+          <div className="h-[28px] sm:h-[40px] border-t border-black/10 flex items-center justify-center font-caveat text-black/80 font-medium text-[10px] sm:text-sm tracking-wide">
             {doodle.text}
           </div>
         </div>

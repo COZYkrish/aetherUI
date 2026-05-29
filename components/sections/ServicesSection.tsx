@@ -49,7 +49,7 @@ export const ServicesSection = () => {
           >
             {/* Left: Number */}
             <div className="flex-shrink-0">
-              <span className="font-black leading-none" style={{ fontSize: "clamp(2.5rem, 10vw, 140px)" }}>
+              <span className="font-black leading-none" style={{ fontSize: "clamp(3rem, 10vw, 140px)" }}>
                 {service.id}
               </span>
             </div>

@@ -63,7 +63,7 @@ export const MarqueeSection = () => {
         src={src}
         alt={`Marquee image ${idx}`}
         loading="lazy"
-        className="w-[260px] h-[168px] sm:w-[340px] sm:h-[220px] md:w-[420px] md:h-[270px] rounded-xl sm:rounded-2xl object-cover shrink-0"
+        className="w-[420px] h-[270px] rounded-2xl object-cover shrink-0"
       />
     ));
   };
@@ -71,7 +71,7 @@ export const MarqueeSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-[#0C0C0C] pt-16 sm:pt-24 md:pt-32 lg:pt-40 pb-10 overflow-hidden flex flex-col gap-2 sm:gap-3"
+      className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3"
     >
       <div
         className="flex gap-3 will-change-transform"

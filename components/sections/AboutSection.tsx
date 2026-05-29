@@ -131,10 +131,10 @@ export const AboutSection = () => {
             </div>
 
             <p className="text-sm uppercase tracking-[0.34em] text-[#D7E2EA]/45">Who I am</p>
-            <h3 className="mt-4 text-3xl font-black uppercase leading-none sm:text-5xl md:text-6xl">
+            <h3 className="mt-4 text-4xl font-black uppercase leading-none sm:text-5xl md:text-6xl">
               {personalInfo.name}
             </h3>
-            <p className="mt-4 sm:mt-6 max-w-3xl text-base sm:text-lg font-medium leading-7 sm:leading-8 text-[#D7E2EA]/78">
+            <p className="mt-6 max-w-3xl text-lg font-medium leading-8 text-[#D7E2EA]/78">
               {personalInfo.bio}
             </p>
 
@@ -180,7 +180,7 @@ export const AboutSection = () => {
             <FadeIn delay={0.15} y={32} className="grid grid-cols-2 gap-3 sm:gap-4">
               {stats.map((item) => (
                 <div key={item.label} className="rounded-[28px] border border-[#D7E2EA]/18 bg-white/[0.03] p-5">
-                  <div className="text-3xl sm:text-4xl font-black leading-none text-[#D7E2EA]">
+                  <div className="text-4xl font-black leading-none text-[#D7E2EA]">
                     <AnimatedCounter value={item.value} suffix={item.suffix} />
                   </div>
                   <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#D7E2EA]/48">
