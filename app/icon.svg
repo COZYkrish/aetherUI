@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="aether-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BF00FF" />
+      <stop offset="100%" stop-color="#00E5FF" />
+    </linearGradient>
+    <linearGradient id="aether-grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00E5FF" />
+      <stop offset="100%" stop-color="#BF00FF" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="256" height="256" rx="56" fill="#050607" />
+  
+  <!-- Ethereal Orbits -->
+  <g transform="translate(128, 128) rotate(-20) translate(-128, -128)">
+    <ellipse cx="128" cy="128" rx="70" ry="25" fill="none" stroke="url(#aether-grad)" stroke-width="12" filter="url(#glow)" />
+  </g>
+  <g transform="translate(128, 128) rotate(40) translate(-128, -128)">
+    <ellipse cx="128" cy="128" rx="70" ry="25" fill="none" stroke="url(#aether-grad2)" stroke-width="12" filter="url(#glow)" />
+  </g>
+  
+  <!-- Core -->
+  <circle cx="128" cy="128" r="14" fill="#ffffff" filter="url(#glow)" />
+</svg>

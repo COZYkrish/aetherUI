@@ -34,6 +34,24 @@ const enrichedProjects = githubProjects.map((repo) => {
   };
 });
 
+const RetroGithubButton = ({ href }: { href: string }) => {
+  return (
+    <a 
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block cursor-pointer border-4 border-black bg-gray-500 pb-[10px] transition-all duration-100 ease-in-out select-none active:pb-0 active:mb-[10px] active:translate-y-[10px]"
+    >
+      <div className="bg-[#dddddd] border-4 border-white px-2 py-1 flex items-center justify-center">
+        <span className="text-[1.1em] tracking-[1px] text-black font-bold flex items-center gap-2">
+          <Github size={16} />
+          GitHub
+        </span>
+      </div>
+    </a>
+  );
+};
+
 export default function ProjectsArchivePage() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#050607] text-[#D7E2EA]">
@@ -193,10 +211,7 @@ function ProjectPanel({
           <span>Updated {project.updated}</span>
         </div>
         <div className="mt-7 flex flex-wrap gap-3">
-          <a href={project.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/75 transition-colors hover:bg-white/10">
-            <Github size={14} />
-            Repository
-          </a>
+          <RetroGithubButton href={project.url} />
           {project.homepage && (
             <a href={project.homepage} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/75 transition-colors hover:bg-white/10">
               <ExternalLink size={14} />
