@@ -27,9 +27,9 @@ export default function Footer() {
               style={{ background: "linear-gradient(135deg, rgba(124,58,237,0.4), rgba(59,130,246,0.3))", border: "1px solid rgba(124,58,237,0.4)" }}>
               <span className="text-xs font-bold text-[#A78BFA]" style={{ fontFamily: "Syne, sans-serif" }}>K</span>
             </div>
-            <span className="text-sm text-[rgba(248,250,252,0.45)]" style={{ fontFamily: "DM Sans, sans-serif" }}>
-              © {year} <span className="text-white font-medium">Krish Sharma</span> — KRISH OS
-            </span>
+            <div className="text-center sm:text-left text-[#D7E2EA]/40 text-xs sm:text-sm tracking-wide font-medium">
+              © {year} <span className="text-white font-medium">Krish Sharma</span> — aetherUI
+            </div>
           </div>
 
           {/* Centre — stack */}
@@ -61,7 +61,7 @@ export default function Footer() {
         <div className="mt-6 pt-5 border-t border-[rgba(248,250,252,0.04)] flex flex-col sm:flex-row items-center justify-between gap-2">
           <span className="text-[9px] text-[rgba(248,250,252,0.18)]"
             style={{ fontFamily: "JetBrains Mono, monospace" }}>
-            KRISH_OS v2.0 Cinematic · Bhubaneswar, Odisha, India · Open to remote
+            aetherUI Cinematic · Bhubaneswar, Odisha, India · Open to remote
           </span>
           <span className="text-[9px] text-[rgba(248,250,252,0.18)]"
             style={{ fontFamily: "JetBrains Mono, monospace" }}>

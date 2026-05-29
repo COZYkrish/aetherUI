@@ -1,6 +1,6 @@
-# Krish OS – Cinematic Portfolio Experience
+# aetherUI – Cinematic Portfolio Experience
 
-Welcome to **Krish OS v2.0**, a highly interactive, cinematic developer portfolio built with modern web technologies. This project is designed to break away from traditional static resumes and deliver a premium, app-like user experience that showcases technical skills through engaging visuals and buttery-smooth interactions.
+Welcome to **aetherUI**, a highly interactive, cinematic developer portfolio built with modern web technologies. This project is designed to break away from traditional static resumes and deliver a premium, app-like user experience that showcases technical skills through engaging visuals and buttery-smooth interactions.
 
 ## 🌟 The User Experience (UX)
 

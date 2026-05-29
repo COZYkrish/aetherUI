@@ -1,5 +1,5 @@
 // ============================================================
-// KRISH OS v2.0 — Cinematic Edition  (sourced from resume)
+// aetherUI — Cinematic Edition  (sourced from resume)
 // ============================================================
 
 export const personalInfo = {
