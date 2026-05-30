@@ -160,9 +160,14 @@ export const AboutSection = () => {
                 href={personalInfo.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-[#D7E2EA]/30 px-6 py-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#D7E2EA]/75 transition-colors hover:border-[#D7E2EA] hover:text-[#D7E2EA]"
+                className="rolling-btn-container"
               >
-                Resume
+                <div className="rolling-btn-cube">
+                  <div className="rolling-btn-face rolling-btn-front">RESUME</div>
+                  <div className="rolling-btn-face rolling-btn-bottom">RESUME</div>
+                  <div className="rolling-btn-face rolling-btn-back">RESUME</div>
+                  <div className="rolling-btn-face rolling-btn-top">RESUME</div>
+                </div>
               </a>
             </div>
           </FadeIn>

@@ -98,25 +98,16 @@ export default function Navigation() {
 
             {/* CTA + mobile toggle */}
             <div className="flex items-center gap-3">
-              <a href={personalInfo.resume} target="_blank" rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300"
-                style={{
-                  fontFamily: "Syne, sans-serif",
-                  background: "rgba(124,58,237,0.15)",
-                  border: "1px solid rgba(124,58,237,0.3)",
-                  color: "#A78BFA",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = "rgba(124,58,237,0.25)";
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(124,58,237,0.5)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = "rgba(124,58,237,0.15)";
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(124,58,237,0.3)";
-                }}
-              >
-                Résumé
-              </a>
+              <div className="hidden sm:block transform scale-[0.8] origin-right">
+                <a href={personalInfo.resume} target="_blank" rel="noopener noreferrer" className="rolling-btn-container">
+                  <div className="rolling-btn-cube">
+                    <div className="rolling-btn-face rolling-btn-front">RESUME</div>
+                    <div className="rolling-btn-face rolling-btn-bottom">RESUME</div>
+                    <div className="rolling-btn-face rolling-btn-back">RESUME</div>
+                    <div className="rolling-btn-face rolling-btn-top">RESUME</div>
+                  </div>
+                </a>
+              </div>
 
               {/* Mobile hamburger */}
               <button
