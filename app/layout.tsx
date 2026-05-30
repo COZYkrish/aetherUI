@@ -14,6 +14,7 @@ export const viewport: Viewport = {
 };
 
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
+import SecurityWrapper from "@/components/SecurityWrapper";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -27,9 +28,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="antialiased overflow-x-hidden font-kanit bg-background text-foreground">
-        <SmoothScrollProvider>
-          {children}
-        </SmoothScrollProvider>
+        <SecurityWrapper>
+          <SmoothScrollProvider>
+            {children}
+          </SmoothScrollProvider>
+        </SecurityWrapper>
       </body>
     </html>
   );

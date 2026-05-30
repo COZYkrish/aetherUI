@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["framer-motion", "lucide-react"],
   },
+  productionBrowserSourceMaps: false,
 };
 
 export default nextConfig;
