@@ -93,15 +93,14 @@ export const PhysicsDoodles = () => {
       if (containerRef.current) containerRef.current.style.pointerEvents = "none";
     });
 
-    // Run the engine
+    // Initialize runner
     const runner = Runner.create();
-    Runner.run(runner, engine);
 
     // Sync DOM elements and rescue fallen bodies
     let animationFrame: number;
     const updateLoop = () => {
       cardBodies.forEach((body, i) => {
-        // Rescue bodies that fell out of bounds (e.g. if container height was 0 on mount)
+        // Rescue bodies that fell out of bounds
         if (body.position.y > height + 200) {
           Matter.Body.setPosition(body, {
             x: Math.random() * (width - (cardWidth + 30)) + (cardWidth / 2 + 15),
@@ -119,7 +118,24 @@ export const PhysicsDoodles = () => {
       });
       animationFrame = requestAnimationFrame(updateLoop);
     };
-    updateLoop();
+    
+    // Pause/Resume engine based on intersection observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            Runner.run(runner, engine);
+            animationFrame = requestAnimationFrame(updateLoop);
+          } else {
+            Runner.stop(runner);
+            cancelAnimationFrame(animationFrame);
+          }
+        });
+      },
+      { threshold: 0 }
+    );
+    
+    observer.observe(containerRef.current);
 
     // Handle window resize dynamically
     const handleResize = () => {
@@ -139,6 +155,7 @@ export const PhysicsDoodles = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
       resizeObserver.disconnect();
+      observer.disconnect();
       cancelAnimationFrame(animationFrame);
       Runner.stop(runner);
       Engine.clear(engine);

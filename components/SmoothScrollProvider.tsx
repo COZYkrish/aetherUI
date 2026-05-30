@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SmoothScrollProvider({
   children,
@@ -11,6 +13,10 @@ export default function SmoothScrollProvider({
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -23,18 +29,21 @@ export default function SmoothScrollProvider({
 
     lenisRef.current = lenis;
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    lenis.on('scroll', ScrollTrigger.update);
 
-    const id = requestAnimationFrame(raf);
+    gsap.ticker.add((time)=>{
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
 
     // Expose globally so GSAP ScrollTrigger can use it
     (window as unknown as { lenis?: unknown }).lenis = lenis;
 
     return () => {
-      cancelAnimationFrame(id);
+      gsap.ticker.remove((time) => {
+        lenis.raf(time * 1000);
+      });
       lenis.destroy();
     };
   }, []);

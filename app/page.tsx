@@ -10,32 +10,29 @@ import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Footer } from "@/components/sections/Footer";
 import CustomCursor from "@/components/CustomCursor";
-import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import LoaderWrapper from "@/components/LoaderWrapper";
 
 export default function Home() {
   return (
     <LoaderWrapper>
-      <SmoothScrollProvider>
-        <CustomCursor />
-        <main className="main-wrapper bg-[#0C0C0C] min-h-screen">
-          <HeroSection 
-            splineBackground={
-              <Spline
-                scene="https://prod.spline.design/IRAWffPsGm2KZB8s/scene.splinecode"
-                style={{ width: "100%", height: "100%" }}
-              />
-            } 
-          />
-          <MarqueeSection />
-          <AboutSection />
-          <ServicesSection />
-          <ProjectsSection />
-          <SkillsSection />
-          <ContactSection />
-          <Footer />
-        </main>
-      </SmoothScrollProvider>
+      <CustomCursor />
+      <main className="main-wrapper bg-[#0C0C0C] min-h-screen">
+        <HeroSection 
+          splineBackground={
+            <Spline
+              scene="https://prod.spline.design/IRAWffPsGm2KZB8s/scene.splinecode"
+              style={{ width: "100%", height: "100%" }}
+            />
+          } 
+        />
+        <MarqueeSection />
+        <AboutSection />
+        <ServicesSection />
+        <ProjectsSection />
+        <SkillsSection />
+        <ContactSection />
+        <Footer />
+      </main>
     </LoaderWrapper>
   );
 }

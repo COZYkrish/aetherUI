@@ -97,7 +97,7 @@ function Grid() {
 export function CubeGridLoader() {
   return (
     <div className="absolute inset-0 w-full h-full">
-      <Canvas>
+      <Canvas dpr={[1, 2]} gl={{ antialias: false, powerPreference: "high-performance" }}>
         <OrthographicCamera makeDefault position={[10, 10, 10]} zoom={60} />
         <OrbitControls enableZoom={false} enablePan={false} />
         <ambientLight intensity={1.5} />
