@@ -142,7 +142,7 @@ export const ContactSection = () => {
                           value={formData.name}
                           onChange={handleChange}
                           className="w-full bg-transparent border border-[#D7E2EA]/25 rounded-full py-3.5 pl-12 pr-6 outline-none focus:border-[#D7E2EA]/80 focus:bg-white/5 transition-all text-sm sm:text-base placeholder:opacity-30 placeholder:text-[#D7E2EA]"
-                          placeholder="ANTIGRAVITY"
+                          placeholder="KRISH SHARMA"
                         />
                       </div>
                     </div>
