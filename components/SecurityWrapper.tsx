@@ -33,12 +33,16 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
       }
     };
 
-    document.addEventListener("contextmenu", handleContextMenu);
-    document.addEventListener("keydown", handleKeyDown);
+    if (process.env.NODE_ENV === "production") {
+      document.addEventListener("contextmenu", handleContextMenu);
+      document.addEventListener("keydown", handleKeyDown);
+    }
 
     return () => {
-      document.removeEventListener("contextmenu", handleContextMenu);
-      document.removeEventListener("keydown", handleKeyDown);
+      if (process.env.NODE_ENV === "production") {
+        document.removeEventListener("contextmenu", handleContextMenu);
+        document.removeEventListener("keydown", handleKeyDown);
+      }
     };
   }, []);
 
